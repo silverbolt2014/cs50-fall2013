@@ -1,0 +1,65 @@
+---------------
+Compilers
+---------------
+Compilation Steps:
+
+1. preprocessing done by processor 
+To just run this step: clang -E hello.c
+
+2. compilation
+clang -S hello.c
+Turns the C code into assembly language.  Assembly code is processor specific
+
+3. Assembling
+clang -c hello.c
+Turns assembly code into object code (aka machine code: 0s and 1s)
+This produces "*.o" files.
+
+4. Linking
+Combing a number of object files into one single file that can be executed.
+Linking is system dependent.
+For example: Say you are using the "<math.h> library in your program.  To link in the math library you will use:
+clang hello.o -lm
+
+We use "-lm" to specify that clang link in the math library.
+"-lm" is just an option that clang understands which means to link to the math library.  We could have specified the location of the file explicitly ourselves if we did not want to use "-lm".
+
+To link a number of object files on your  own do:
+clang hello.o hello2.o hello3.o
+Note that only one of the files must specify a main function
+
+------------
+Libraries
+------------
+
+In technical terms, a library is a binary file that has been produced by linking together a collection of object files using a tool called a linker.
+
+Header files are referred to as the interface to a library.
+Header files do not contain function definitions.
+The function definitions are in implementation files (.c) files.
+
+The header and implementation files are compiled into object files.  The object files are then linked together to produce the library binary file.
+
+An executable file is a file that in the binary format that the computer can understand.
+
+
+To use a C library:
+Step1: include the header files in the source code file in which you wish to use the library's code. 
+
+Step2: Link in the libraries
+example: clang hello.c ... -l[libname]
+// On many systems C standard libraries are automatically linked for you.
+
+
+-----------------
+make, clang
+-----------------
+
+make is an utility for compiling source code.
+It is a program that organizes invocations of the compiler on source code so that things get compiled in the proper order
+
+
+
+
+
+
