@@ -1,0 +1,6 @@
+Say you write a library in C with the following files:
+
+mylib.h 
+mylib.c
+
+You compile them to get 
