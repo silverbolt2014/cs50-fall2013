@@ -47,8 +47,10 @@ To use a C library:
 Step1: include the header files in the source code file in which you wish to use the library's code. 
 
 Step2: Link in the libraries
-example: clang hello.c ... -l[libname]
+example: clang hello.c ... -l[libname] -o hello
 // On many systems C standard libraries are automatically linked for you.
+All "-l " options should be placed towards the end of the command
+
 
 
 -----------------
@@ -59,7 +61,24 @@ make is an utility for compiling source code.
 It is a program that organizes invocations of the compiler on source code so that things get compiled in the proper order
 
 
+----------------
+typecasting
+-----------------
+Changes the way we interpret data.
+
+Variables
+In C in general variables uses underscore to separate parts in the variable name.
 
 
+-------
+Style
+--------
+Example of a comment for a function:
+/**
+ * Describe the function
+ */
 
-
+ //[space]The comment
+ 
+ Use: int* p;
+ instead of: int *p
