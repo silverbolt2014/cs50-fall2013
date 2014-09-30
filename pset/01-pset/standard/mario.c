@@ -6,7 +6,7 @@ gcc -std=c99 mario.c ../../cs50lib/cs50.c
 This is CS50 Pset1 Fall 2013
 
 To print the pyramid:
-An equation was determined to figure out how to print each line by one.
+An equation was determined to figure out how to print each line one by one.
 
 */
 

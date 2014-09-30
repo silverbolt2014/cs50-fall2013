@@ -11,7 +11,7 @@ This is CS50 Pset1 Fall 2013 - Greedy Problem
 #include "../../cs50lib/cs50.h"
 
 // #define VERSION_1 refers to an implementation using while loops
-// #define VERSION_1 refers to an implementation not using while loops
+// #define VERSION_2 refers to an implementation not using while loops
 #define VERSION_1
 
 int main(void)
@@ -22,14 +22,17 @@ int main(void)
 	printf("O hai How much change is owed?\n");
 	input = GetFloat();
 
-	while(input < 0)
+	while(input <= 0)
 	{
 		printf("How much money is owed?\n");
 		input = GetFloat();
 	}
 
 	// Convert from dollars and cents to cents only
-	int cents = input * 100;
+	float inputAsCents = input * 100;
+	
+	// If the user entered more than 2 digits after the decimal we get rid of the extra digits with the cast
+	int cents = (int) inputAsCents;
 	int originalAmount = cents;
 	//printf("originalAmount in cents = %d\n", originalAmount);
 
