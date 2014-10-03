@@ -1,0 +1,7 @@
+A string is an array of chars
+
+ <data type> <name of array> [size of array]
+  
+ int main(int argc, string argv[])
+ 
+ Note that the second parameter is an array of strings
