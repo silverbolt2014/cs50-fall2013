@@ -8,6 +8,7 @@ This is CS50 Pset1 Fall 2013 - Greedy Problem
 */
 
 #include <stdio.h>
+#include <math.h>
 #include "../../cs50lib/cs50.h"
 
 // #define VERSION_1 refers to an implementation using while loops
@@ -29,9 +30,8 @@ int main(void)
 	}
 
 	// Convert from dollars and cents to cents only
-	float inputAsCents = input * 100;
+	double inputAsCents = round(input * 100);
 	
-	// If the user entered more than 2 digits after the decimal we get rid of the extra digits with the cast
 	int cents = (int) inputAsCents;
 	int originalAmount = cents;
 	//printf("originalAmount in cents = %d\n", originalAmount);
