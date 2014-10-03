@@ -1,7 +1,7 @@
 /*
 
 Compile using:
-gcc -std=c99 greedy.c ../../cs50lib/cs50.c
+gcc -std=c99 greedy.c ../../../cs50lib/cs50.c
 
 This is CS50 Pset1 Fall 2013 - Greedy Problem
 
@@ -9,7 +9,7 @@ This is CS50 Pset1 Fall 2013 - Greedy Problem
 
 #include <stdio.h>
 #include <math.h>
-#include "../../cs50lib/cs50.h"
+#include "../../../cs50lib/cs50.h"
 
 // #define VERSION_1 refers to an implementation using while loops
 // #define VERSION_2 refers to an implementation not using while loops

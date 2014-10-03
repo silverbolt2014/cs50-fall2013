@@ -1,7 +1,7 @@
 /*
 
 Compile using:
-gcc -std=c99 mario.c ../../cs50lib/cs50.c
+gcc -std=c99 mario.c ../../../cs50lib/cs50.c
 
 This is CS50 Pset1 Fall 2013
 
@@ -11,7 +11,7 @@ An equation was determined to figure out how to print each line one by one.
 */
 
 #include <stdio.h>
-#include "../../cs50lib/cs50.h"
+#include "../../../cs50lib/cs50.h"
 
 int main(void)
 {
