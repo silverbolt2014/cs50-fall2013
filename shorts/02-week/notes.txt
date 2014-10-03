@@ -1,0 +1,107 @@
+ Arrays
+ 
+ an array is a contiguous block of memory
+ an array of 10 integers is a block of memory large enough to hold 10 integers
+ 
+ Array declarations:
+ version 1
+ int x[N]; 
+ The memory block goes on the stack.
+ In this case, "x" is not a variable.  You can think of it as a symbol.
+ You can think of it as a constant the compiler chooses for us.
+ Therefore you cannot do something like "x++".
+ Suppose you have "int x[N];" in a function, when the function returns the block of memory will automatically be deallocated.
+ 
+ NOTE:
+Assume you have: int x [4];
+sizeof(x) will return 16 bytes.
+ 
+ ----
+ 
+ version 2 (pointer-type array)
+ int*x = malloc(sizeof(int) * N);
+ The memory block goes on the heap.
+ "x" is a variable that is placed on the stack.
+ The variable x on the stack just stores the address of the big block of memory that was allocated on the heap.
+ You can do "x++" on "x" as it is a variable.
+ You have to call "free" on this.
+ 
+ NOTE:
+Assume you have: int x [4];
+sizeof(x) will return 4 bytes.
+
+Global Variables
+-----------
+global variables can be stored in different parts of memory
+There is a part of memory for initialized global variables and there is another part of uninitialized global variables.
+
+#define <SYMBOLIC_NAME> <CONSTANT>
+Is a way to give symbolic name to a constant
+
+Avoid using global variables as it clutters the name space.  (AKA you can end up in a situation in which you are not sure what the variable is referring to.)
+
+
+Redirection and Pipes
+----------------------------
+the printf function writes to a stream called standard out. (stdout)
+when something is written to standard out it is by default displayed on the terminal
+
+Example:
+./a.out > thefile1.txt
+The above redirects the standard out of "a.out" was written to the file called thefile1.txt
+
+./a.out >> thefile1.txt
+The above appends to the file.
+
+To discard any output of our program we can redirect to the special file:
+/dev/null
+When anything is written to the file it is automatically discarded
+
+
+--
+
+Standard in is by default the stream of characters typed at the keyboard
+ To redirect stdin:
+ 
+ GetString() [from cs50lib] and similar function read from the standard input stream
+ example:
+ ./a.out < theFile.txt
+ 
+ ----
+How to use the output of one program as the input to another program
+version 1:
+./program1 > input.txt
+./program2 < input.txt
+ 
+version 2:
+./program1 > input.txt; ./program2 < input.txt
+ 
+version 3:
+./program1 |  ./program2
+The standard out of program1 will be used as the standard in of program2
+
+Other commands used: sort, uniq
+ 
+----
+
+
+The stack:
+
+--------------------------
+| foo's locals             |
+--------------------------
+| foo's parameters    |
+--------------------------
+| main's locals           |
+ --------------------------
+| main's parameters |
+ --------------------------
+
+
+
+
+ 
+ 
+ 
+ 
+ 
