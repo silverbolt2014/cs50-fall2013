@@ -13,9 +13,8 @@
 
 #include <stdio.h>
 #include "../../../cs50lib/cs50.c"
-#include <stdlib.h> // for atoi()
 #include <string.h> // for strlen()
-#include <ctype.h> // for isalpah
+#include <ctype.h> // for isalpha
 
 #define UPPER_CASE_OFFSET 65
 #define LOWER_CASE_OFFSET 97
