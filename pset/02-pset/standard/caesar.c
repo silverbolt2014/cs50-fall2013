@@ -6,27 +6,22 @@
  * immediately as via the statement below:
  */
 
-
 #include <stdio.h>
 #include "../../../cs50lib/cs50.c"
 #include <stdlib.h> // for atoi()
 #include <string.h> // for strlen()
 #include <ctype.h> // for isalpah
 
-
 #define UPPER_CASE_OFFSET 65
 #define LOWER_CASE_OFFSET 97
 
 /*
-The function takes an ascii encoded letter converts it to a 
-1. Take an ascii encoded letter and converts it to a location in a zero based index.
-2. The cipher equivalent of the letter is obtained using the zero based index value of the letter
+ * Function: caesar_encipher
+ * Returns the cipher equivalent character of the parameter "character"
  */
 int caesar_encipher(int character, int offset, int user_key)
 {
 	int alpha_index_value = character - offset;
-	// 	printf("current_char = %i\n", current_char);
-	//  printf("alpha_index_value = %i\n", alpha_index_value);
 	int cipher_index_value = (alpha_index_value + user_key ) % 26;
 	int char_to_print = cipher_index_value + offset;
 	return char_to_print;
@@ -48,12 +43,10 @@ int main(int argc, string argv[])
 		return 1;
 	}
 
-
 	printf("Please enter the plaintext: ");
 	string user_input_text = GetString();
 
-	printf("You entered %s\n", user_input_text);
-
+	// printf("You entered %s\n", user_input_text);
 	for (int i = 0, length = strlen(user_input_text); i < length; i++)
 	{
 		char current_char = user_input_text[i];
