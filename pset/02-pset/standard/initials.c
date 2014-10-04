@@ -15,9 +15,9 @@
 
 int main (void)
 {
-	printf("Please enter the name: ");
+	//printf("Please enter the name: ");
 	string user_name = GetString();
-	printf("You entered %s\n", user_name);
+	//printf("You entered %s\n", user_name);
 
 	if (user_name != NULL)
 	{
