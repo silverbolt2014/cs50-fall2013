@@ -1,0 +1,6 @@
+int letter = 'A';
+
+Characters and integers are interchangeable.
+By putting the letter "A" in single quotes the integer can store the ascii value of the letter.
+
+
