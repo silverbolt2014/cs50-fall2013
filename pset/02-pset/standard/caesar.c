@@ -21,8 +21,11 @@
  */
 int caesar_encipher(int character, int offset, int user_key)
 {
-	int alpha_index_value = character - offset;
+	// Shifts letters down to a 0 to 25 index range
+  int alpha_index_value = character - offset;
 	int cipher_index_value = (alpha_index_value + user_key ) % 26;
+  
+  // Shift letter back to origin position in ascii
 	int char_to_print = cipher_index_value + offset;
 	return char_to_print;
 }
