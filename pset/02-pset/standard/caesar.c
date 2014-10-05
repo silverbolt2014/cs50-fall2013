@@ -7,10 +7,10 @@
  */
 
 #include <stdio.h>
-#include "../../../cs50lib/cs50.c"
+#include "../../../cs50lib/cs50.h"
 #include <stdlib.h> // for atoi()
 #include <string.h> // for strlen()
-#include <ctype.h> // for isalpah
+#include <ctype.h> // for isalpha
 
 #define UPPER_CASE_OFFSET 65
 #define LOWER_CASE_OFFSET 97
@@ -21,11 +21,11 @@
  */
 int caesar_encipher(int character, int offset, int user_key)
 {
-	// Shifts letters down to a 0 to 25 index range
+	// Shifts character down to a 0 to 25 index range
   int alpha_index_value = character - offset;
 	int cipher_index_value = (alpha_index_value + user_key ) % 26;
   
-  // Shift letter back to origin position in ascii
+  // Shift letter to its position in the ascii range
 	int char_to_print = cipher_index_value + offset;
 	return char_to_print;
 }
@@ -46,7 +46,7 @@ int main(int argc, string argv[])
 		return 1;
 	}
 
-	printf("Please enter the plaintext: ");
+	// printf("Please enter the plaintext: ");
 	string user_input_text = GetString();
 
 	// printf("You entered %s\n", user_input_text);
