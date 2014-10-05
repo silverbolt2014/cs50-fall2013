@@ -12,7 +12,7 @@
  */
 
 #include <stdio.h>
-#include "../../../cs50lib/cs50.c"
+#include "../../../cs50lib/cs50.h"
 #include <string.h> // for strlen()
 #include <ctype.h> // for isalpha
 
@@ -26,10 +26,11 @@
 int vigenere_encipher(int character, int offset, int user_key)
 {
   
-  // Shifts letters down to a 0 to 25 index range
+  // Shifts character down to a 0 to 25 index range
   int alpha_index_value = character - offset;
   
   // Shift key letter to 0 to 25 index range
+  // upper case offset is used a lower case user_key is treated as an upper case letter
   int key_letter_index_value = user_key - UPPER_CASE_OFFSET;
   
 	int cipher_index_value = (alpha_index_value + key_letter_index_value ) % 26;
@@ -61,7 +62,7 @@ int main(int argc, string argv[])
 	}
 
 
-	printf("Please enter the plaintext: ");
+	// printf("Please enter the plaintext: ");
 	string user_input_text = GetString();
 
 	int keyword_length = strlen(user_input_keyword);
