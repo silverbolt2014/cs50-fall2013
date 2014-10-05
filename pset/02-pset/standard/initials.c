@@ -9,8 +9,9 @@
  */
 
 #include <stdio.h>
-#include "../../../cs50lib/cs50.c"
-
+#include <ctype.h>
+#include "../../../cs50lib/cs50.h"
+#include <string.h>
 #define SPACE ' '
 
 int main (void)
