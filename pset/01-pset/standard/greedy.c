@@ -1,7 +1,7 @@
 /*
 
 Compile using:
-gcc -std=c99 greedy.c ../../../cs50lib/cs50.c
+gcc -std=c99 greedy.c ../../../cs50lib/cs50.c -lm
 
 This is CS50 Pset1 Fall 2013 - Greedy Problem
 
@@ -25,7 +25,7 @@ int main(void)
 
 	while(input <= 0)
 	{
-		printf("How much money is owed?\n");
+		printf("How much change is owed?\n");
 		input = GetFloat();
 	}
 
@@ -76,7 +76,7 @@ int main(void)
   numPennies = cents % 5;
 #endif
 
-	printf("You will need %d quarters, %d dimes, %d nickels, %d pennies\n", numQuarters, numDimes, numNickels, numPennies);
+	// printf("You will need %d quarters, %d dimes, %d nickels, %d pennies\n", numQuarters, numDimes, numNickels, numPennies);
 	printf("%d\n", numQuarters + numDimes + numNickels + numPennies);
 
 
