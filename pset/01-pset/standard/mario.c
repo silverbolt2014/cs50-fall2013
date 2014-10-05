@@ -37,7 +37,7 @@ int main(void)
 		// Print Xs
 		for (int i = 0; i < numXs; i++)
 		{
-			printf("X");
+			printf("#");
 		}
 		printf("\n");
 	}
