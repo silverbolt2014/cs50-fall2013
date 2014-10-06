@@ -42,7 +42,7 @@ int main(int argc, string argv[])
     if (argc != 2)
 	{
         printf("Invalid number of arguments.\n");
-		printf("Proper usage: <program-name> <cipher key>\n");
+        printf("Proper usage: <program-name> <cipher key>\n");
 		return 1;
 	}
 
