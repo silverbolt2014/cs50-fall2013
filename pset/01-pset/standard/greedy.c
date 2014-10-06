@@ -7,9 +7,16 @@ This is CS50 Pset1 Fall 2013 - Greedy Problem
 
 */
 
+// Uncomment if running on CS50 appliance
+// #define RUN_ON_APPLIANCE
+#ifdef RUN_ON_APPLIANCE
+    #include <cs50.h>
+#else
+    #include "../../../cs50lib/cs50.h"
+#endif
+
 #include <stdio.h>
 #include <math.h>
-#include "../../../cs50lib/cs50.h"
 
 // #define VERSION_1 refers to an implementation using while loops
 // #define VERSION_2 refers to an implementation not using while loops

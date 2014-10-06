@@ -6,8 +6,15 @@
  * immediately as via the statement below:
  */
 
+// Uncomment if running on CS50 appliance
+// #define RUN_ON_APPLIANCE
+#ifdef RUN_ON_APPLIANCE
+    #include <cs50.h>
+#else
+    #include "../../../cs50lib/cs50.h"
+#endif
+
 #include <stdio.h>
-#include "../../../cs50lib/cs50.h"
 #include <stdlib.h> // for atoi()
 #include <string.h> // for strlen()
 #include <ctype.h> // for isalpha

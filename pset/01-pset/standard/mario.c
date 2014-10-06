@@ -10,22 +10,19 @@ An equation was determined to figure out how to print each line one by one.
 
 */
 
-
-#define APPLIANCE
-
+// Uncomment if running on CS50 appliance
+// #define RUN_ON_APPLIANCE
+#ifdef RUN_ON_APPLIANCE
+    #include <cs50.h>
+#else
+    #include "../../../cs50lib/cs50.h"
+#endif
 
 #include <stdio.h>
 
-#ifdef APPLIANCE
-#include <cs50.h>
-#else
-#include "../../../cs50lib/cs50.h"
-#endif
-
-
 int main(void)
 {
-	// Prompt and valid user input (0 to 23)
+	// Prompt for and validate user input (valid: 0 to 23)
 	int height = -1;
 	do
 	{
