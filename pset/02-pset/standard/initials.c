@@ -25,7 +25,7 @@
 
 int main (void)
 {
-	//printf("Please enter the name: ");
+    //printf("Please enter the name: ");
 	string user_name = GetString();
 	//printf("You entered %s\n", user_name);
 
@@ -43,4 +43,4 @@ int main (void)
 		}
     printf("\n");
 	}
-}
+

@@ -39,9 +39,9 @@ int caesar_encipher(int character, int offset, int user_key)
 
 int main(int argc, string argv[])
 {
-	if (argc != 2)
+    if (argc != 2)
 	{
-		printf("Invalid number of arguments.\n");
+        printf("Invalid number of arguments.\n");
 		printf("Proper usage: <program-name> <cipher key>\n");
 		return 1;
 	}

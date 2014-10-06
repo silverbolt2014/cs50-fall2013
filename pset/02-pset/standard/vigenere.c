@@ -32,37 +32,37 @@
  */
 int vigenere_encipher(int character, int offset, int user_key)
 {
-  
-  // Shifts character down to a 0 to 25 index range
-  int alpha_index_value = character - offset;
-  
-  // Shift key letter to 0 to 25 index range
-  // upper case offset is used a lower case user_key is treated as an upper case letter
-  int key_letter_index_value = user_key - UPPER_CASE_OFFSET;
-  
-	int cipher_index_value = (alpha_index_value + key_letter_index_value ) % 26;
-	int char_to_print = cipher_index_value + offset;
-	return char_to_print;
+
+    // Shifts character down to a 0 to 25 index range
+    int alpha_index_value = character - offset;
+
+    // Shift key letter to 0 to 25 index range
+    // upper case offset is used a lower case user_key is treated as an upper case letter
+    int key_letter_index_value = user_key - UPPER_CASE_OFFSET;
+
+    int cipher_index_value = (alpha_index_value + key_letter_index_value ) % 26;
+    int char_to_print = cipher_index_value + offset;
+    return char_to_print;
 }
 
 
 int main(int argc, string argv[])
 {
-	if (argc != 2)
+    if (argc != 2)
 	{
-		printf("Invalid number of arguments.\n");
-		printf("Proper usage: <program-name> <cipher keyword>\n");
-		return 1;
+        printf("Invalid number of arguments.\n");
+        printf("Proper usage: <program-name> <cipher keyword>\n");
+        return 1;
 	}
+    
+    string user_input_keyword = argv[1];
 
-	string user_input_keyword = argv[1];
-
-	// Validate user's keyword
-	for (int i = 0, n = strlen(user_input_keyword); i < n; i++)
+    // Validate user's keyword
+    for (int i = 0, n = strlen(user_input_keyword); i < n; i++)
 	{
-		if ( !isalpha( user_input_keyword[i] ) )
+        if ( !isalpha( user_input_keyword[i] ) )
 		{
-			printf("Invalid keyword.  Keyword must contain only alphabetic characters\n");
+		    printf("Invalid keyword.  Keyword must contain only alphabetic characters\n");
 			return 1;
 		}
 		// printf("i = %i, %c\n", i, user_input_keyword[i]);
@@ -72,13 +72,13 @@ int main(int argc, string argv[])
 	// printf("Please enter the plaintext: ");
 	string user_input_text = GetString();
 
-	int keyword_length = strlen(user_input_keyword);
-  int keyword_counter = keyword_length;
-  int key_to_use;
+    int keyword_length = strlen(user_input_keyword);
+    int keyword_counter = keyword_length;
+    int key_to_use;
 
-	for (int i = 0, length = strlen(user_input_text); i < length; i++)
+    for (int i = 0, length = strlen(user_input_text); i < length; i++)
 	{
-		char current_char = user_input_text[i];
+        char current_char = user_input_text[i];
 		// printf("i = %i, %c\n", i, current_char);
 		if ( !isalpha( current_char ) )
 		{
@@ -86,20 +86,20 @@ int main(int argc, string argv[])
 		}
 		else
 		{
-			if ( isupper( current_char ) )
+		    if ( isupper( current_char ) )
 			{
-				key_to_use = user_input_keyword[keyword_counter % keyword_length];
-        keyword_counter++;
-        
-        // Since a letter regardless of its case is treated the equally
-        // all keyword letter are turned to upper case to simplify the math
-        printf("%c", vigenere_encipher(current_char, UPPER_CASE_OFFSET, toupper(key_to_use)));
+                key_to_use = user_input_keyword[keyword_counter % keyword_length];
+                keyword_counter++;
+
+                // Since a letter regardless of its case is treated the equally
+                // all keyword letter are turned to upper case to simplify the math
+                printf("%c", vigenere_encipher(current_char, UPPER_CASE_OFFSET, toupper(key_to_use)));
 			}
 			else if ( islower(current_char) )
-			{
-        key_to_use = user_input_keyword[keyword_counter % keyword_length];
-        keyword_counter++;
-				printf("%c", vigenere_encipher(current_char, LOWER_CASE_OFFSET, toupper(key_to_use)));
+            {
+                key_to_use = user_input_keyword[keyword_counter % keyword_length];
+                keyword_counter++;
+                printf("%c", vigenere_encipher(current_char, LOWER_CASE_OFFSET, toupper(key_to_use)));
 			}
 		}
 	}
