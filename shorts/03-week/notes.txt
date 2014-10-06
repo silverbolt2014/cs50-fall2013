@@ -1,0 +1,36 @@
+BinarySearch
+Assuming you have a sorted listed, binary search allows you to break the list into half until you find the item you are looking for.
+
+In general, the data (or list) that one will have to search through is not always sorted therefore binary search will not work.  How do we store data (or a list) so that when we add or remove an item from the list that the list is always sorted.
+
+Keeping the list always sorted will ensure that we don't have to sort before we need to do a search.
+
+This is accomplished by using a binary search tree.
+
+Binary Search Tree Properties
+
+- The left subtree of a node only contains values that are less than or equal to the node's value.
+
+- The right subtree of a node only contains values that are greater than or equal to the node's value.
+
+- Both the left and right subtrees of a node are also binary search trees.
+
+To remove an element from a binary search tree
+1. if the element is a leave node just remove the leave
+2. if the element (A) has only one child, take the child element(or subtree) (B)and connect (B) to the parent of (A)
+3. if the element (A) has two children, find the node that has the next largest value.  Swap the two of them then delete (A).  Note that the node with the next largest value cannot have two children.
+
+
+Command line arguments
+--------------------------------
+man cp results in the following
+
+SYNOPSIS                                                                                                                                                                          
+		cp [OPTION]... [-T] SOURCE DEST
+		
+Note that SOURCE and DEST are actually underlined but we can represent underline in the text editor that was used for these notes.
+The underline means that those arguments are mandatory.
+
+
+
+The  name of array is a pointer to the first element of the array.
