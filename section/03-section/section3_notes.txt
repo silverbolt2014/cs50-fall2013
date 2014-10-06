@@ -1,0 +1,14 @@
+10 most helpful GDB commands:
+
+gdb ./program-name
+
+break (b) main // sets a breakpoint at main
+run <arguments>
+next (n) // takes you line by line through the program. 
+step (s) // Takes you inside functions
+list // shows you about 10 or so lines around where you are in the code
+print (p) // show you the value of a variable
+info  locals // shows all local variables
+continue (c) // runs program until next breakpoint or until program completion
+disable // removes breakpoints
+quit (q)
