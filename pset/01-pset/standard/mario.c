@@ -10,8 +10,18 @@ An equation was determined to figure out how to print each line one by one.
 
 */
 
+
+#define APPLIANCE
+
+
 #include <stdio.h>
+
+#ifdef APPLIANCE
+#include <cs50.h>
+#else
 #include "../../../cs50lib/cs50.h"
+#endif
+
 
 int main(void)
 {
@@ -41,4 +51,5 @@ int main(void)
 		}
 		printf("\n");
 	}
+        return 0;
 }
