@@ -7,3 +7,15 @@ You compile them to get
 
 - Take a look at top coder's uml tool
 http://accc.uic.edu/service/shell-accounts/shells
+
+Work flow:
+lecture n
+shorts n
+section n -1
+pset n- 1
+
+for n >=7
+lecture n
+shorts n
+section n-1
+pset n-2
