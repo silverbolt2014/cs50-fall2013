@@ -12,9 +12,9 @@
 // Uncomment if running on CS50 appliance
 // #define RUN_ON_APPLIANCE
 #ifdef RUN_ON_APPLIANCE
-    #include <cs50.h>
+#include <cs50.h>
 #else
-    #include "../../../cs50lib/cs50.h"
+#include "../../../cs50lib/cs50.h"
 #endif
 
 #include <stdio.h>
@@ -26,21 +26,21 @@
 int main (void)
 {
     //printf("Please enter the name: ");
-	string user_name = GetString();
-	//printf("You entered %s\n", user_name);
+    string user_name = GetString();
+    //printf("You entered %s\n", user_name);
 
-	if (user_name != NULL)
-	{
-		printf("%c", toupper( user_name[0] ));
+    if (user_name != NULL)
+    {
+        printf("%c", toupper( user_name[0] ));
 
-		unsigned int i, n;
-		for (i = 1, n = (unsigned int) strlen(user_name); i < n; i++)
-		{
-			if (user_name[i-1] == SPACE && isalpha( user_name[i] ) )
-			{
-				printf("%c", toupper( user_name[i] ));
-			}
-		}
-    printf("\n");
-	}
+        unsigned int i, n;
+        for (i = 1, n = (unsigned int) strlen(user_name); i < n; i++)
+        {
+            if (user_name[i-1] == SPACE && isalpha( user_name[i] ) )
+            {
+                printf("%c", toupper( user_name[i] ));
+            }
+        }
+        printf("\n");
+    }
 

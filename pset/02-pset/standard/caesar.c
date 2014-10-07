@@ -9,9 +9,9 @@
 // Uncomment if running on CS50 appliance
 // #define RUN_ON_APPLIANCE
 #ifdef RUN_ON_APPLIANCE
-    #include <cs50.h>
+#include <cs50.h>
 #else
-    #include "../../../cs50lib/cs50.h"
+#include "../../../cs50lib/cs50.h"
 #endif
 
 #include <stdio.h>
@@ -40,42 +40,42 @@ int caesar_encipher(int character, int offset, int user_key)
 int main(int argc, string argv[])
 {
     if (argc != 2)
-	{
+    {
         printf("Invalid number of arguments.\n");
         printf("Proper usage: <program-name> <cipher key>\n");
-		return 1;
-	}
+        return 1;
+    }
 
-	int user_key = atoi( argv[1] );
-	if (user_key <= 0)
-	{
-		printf("Invalid Key. The provided key must be a positive number less than 2^31 - 26 \n");
-		return 1;
-	}
+    int user_key = atoi( argv[1] );
+    if (user_key <= 0)
+    {
+        printf("Invalid Key. The provided key must be a positive number less than 2^31 - 26 \n");
+        return 1;
+    }
 
-	// printf("Please enter the plaintext: ");
-	string user_input_text = GetString();
+    // printf("Please enter the plaintext: ");
+    string user_input_text = GetString();
 
-	// printf("You entered %s\n", user_input_text);
-	for (int i = 0, length = strlen(user_input_text); i < length; i++)
-	{
-		char current_char = user_input_text[i];
-		// printf("i = %i, %c\n", i, user_input_text[i]);
-		if ( !isalpha( current_char ) )
-		{
-			printf("%c", current_char );
-		}
-		else
-		{
-			if ( isupper( current_char ) )
-			{
-				printf("%c", caesar_encipher(current_char, UPPER_CASE_OFFSET, user_key));
-			}
-			else if ( islower(current_char) )
-			{
-				printf("%c", caesar_encipher(current_char, LOWER_CASE_OFFSET, user_key));
-			}
-		}
-	}
-	printf("\n");
+    // printf("You entered %s\n", user_input_text);
+    for (int i = 0, length = strlen(user_input_text); i < length; i++)
+    {
+        char current_char = user_input_text[i];
+        // printf("i = %i, %c\n", i, user_input_text[i]);
+        if ( !isalpha( current_char ) )
+        {
+            printf("%c", current_char );
+        }
+        else
+        {
+            if ( isupper( current_char ) )
+            {
+                printf("%c", caesar_encipher(current_char, UPPER_CASE_OFFSET, user_key));
+            }
+            else if ( islower(current_char) )
+            {
+                printf("%c", caesar_encipher(current_char, LOWER_CASE_OFFSET, user_key));
+            }
+        }
+    }
+    printf("\n");
 }
