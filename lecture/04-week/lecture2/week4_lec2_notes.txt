@@ -1,0 +1,1 @@
+'\0' is a byte in which all bits are zero
