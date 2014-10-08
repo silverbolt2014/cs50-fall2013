@@ -16,11 +16,13 @@
  */
  
 #define _XOPEN_SOURCE 500
+#define BLANK_VALUE 0
 
 #include <cs50.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 // board's minimal dimension
 #define MIN 3
@@ -30,6 +32,8 @@
 
 // board, whereby board[i][j] represents row i and column j
 int board[MAX][MAX];
+int blank_row = -1;
+int blank_col = -1;
 
 // board's dimension
 int d;
@@ -131,7 +135,28 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    // Initialize the board, starting with the largest number and moving down
+    int count = d*d - 1;
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            board[i][j] = count;
+            count--;
+        }
+    }
+    
+    // If the board is even by even switch tiles 1 and 2
+    if (d % 2 == 0)
+    {
+        board[ d - 1][d - 2] = 2;
+        board[ d - 1] [d - 3] = 1;
+    }
+    
+    // Save location of blank tile
+    blank_row = d - 1;
+    blank_col = d - 1;
+    
 }
 
 /**
@@ -139,7 +164,18 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO
+    // printf("function: %s\n", __func__);
+    
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            printf("%2i ", board[i][j]);
+        }
+        printf("\n");
+    }
+
+    
 }
 
 /**
@@ -148,7 +184,106 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // TODO
+    // Validate user entered a valid tile value
+    if (tile > d*d - 1 || tile < 1)
+    {
+        return false;
+    }
+    
+    int tile_row = -1;
+    int tile_col = -1;
+    
+    // Find coordinates for the tile
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            if ( tile == board[i][j] )
+            {
+                tile_row = i;
+                tile_col = j;
+            }
+            
+        }
+    }
+    
+    //- printf("tile = %d, [%i, %i]\n", tile, tile_row, tile_col);
+    //- printf("blank tile [%i, %i]\n", blank_row, blank_col);
+    
+    // Up and Down - Same column
+    if (blank_col == tile_col)
+    {
+        //- printf("Same column\n");
+        // tile is above blank tile
+        if ( blank_row - 1 == tile_row )
+        {
+            //- printf("The tile can move down\n");
+            // new tile coordinates
+            board[blank_row][tile_col] = tile;
+
+            // new blank coordinates
+            board[blank_row - 1][tile_col] = BLANK_VALUE;
+            
+            // Update blank coordinates
+            blank_row = blank_row - 1;
+            return true;
+        }
+        
+        // title is below blank tile
+        if ( blank_row + 1 == tile_row )
+        {
+            //- printf("The tile can move up\n");
+            // new tile coordinates
+            board[blank_row][tile_col] = tile;
+
+            // new blank coordinates
+            board[blank_row + 1][tile_col] = BLANK_VALUE;
+            
+            // Update blank coordinates
+            blank_row = blank_row + 1;
+            return true;
+        }
+    }
+    
+    
+    // Left and Right - Same Row
+    if (blank_row == tile_row)
+    {
+        //- printf("Same row\n");
+        // tile is to the left of the blank tile
+        if ( blank_col - 1 == tile_col )
+        {
+            //- printf("The tile can move right\n");
+            // new tile coordinates
+            board[blank_row][blank_col] = tile;
+
+            // new blank coordinates
+            board[blank_row][blank_col - 1] = BLANK_VALUE;
+            
+            // Update blank coordinates
+            blank_col = blank_col - 1;
+            return true;
+        }
+        // title is to the right of the blank tile
+        if ( blank_col + 1 == tile_col )
+        {
+            //- printf("The tile can move left\n");
+            // new tile coordinates
+            board[blank_row][blank_col] = tile;
+
+            // new blank coordinates
+            board[blank_row][blank_col + 1] = BLANK_VALUE;
+            
+            // Update blank coordinates
+            blank_col = blank_col + 1;
+
+            return true;
+        }
+    }
+    
+    usleep(3000000);
+
+    
     return false;
 }
 
@@ -158,7 +293,27 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
+    int current_value = 1;
+    
+    for (int r = 0; r < d; r++)
+    {
+        for (int c = 0; c < d; c++)
+        {
+            if (r == d-1 && c == d-1)
+            {
+                if ( board[r][c] == BLANK_VALUE )
+                {
+                    return true;
+                }
+            }
+            else if ( board[r][c] != current_value )
+            {
+                return false;
+            }
+            current_value++;            
+        }
+    }
+    printf("Error: Should never get here, line:%d\n", __LINE__);
     return false;
 }
 
