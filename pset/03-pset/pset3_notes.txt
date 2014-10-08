@@ -1,0 +1,28 @@
+Redirect output of a program to a file:
+./generate 1000 > numbers.txt
+
+Redirect the output of the ./generate program to the ./find program:
+./generate 1000 50 | ./find 2008
+
+To see the "exit code" of the last command:
+echo $?
+
+Now, recall the syntax for declaring an array. Not only do you specify the array’s type, you also specify its size between brackets, just as we do for haystack in find.c :
+
+int haystack[MAX];
+
+
+But when passing an array, you only specify its name, just as we do when passing haystack to sort in find.c :
+
+sort(haystack, size);
+
+
+
+---
+
+void sort(int values[], int n);
+As this return type of void implies, this function must not return a sorted array; it
+must instead "destructively" sort the actual array that it’s passed by moving around the
+values therein. As we’ll discuss in Week 4, arrays are not passed "by value" but instead
+"by reference," which means that sort will not be passed a copy of an array but,
+rather, the original array itself.
