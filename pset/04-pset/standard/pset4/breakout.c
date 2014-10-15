@@ -33,6 +33,16 @@
 // lives
 #define LIVES 3
 
+// Paddle size and specs
+#define PADDLE_HEIGHT 20
+#define PADDLE_WIDTH 60
+#define PADDLE_VERTICAL_LOCATION 500
+
+#define BRICK_VERTICAL_OFFSET 15
+#define BRICK_HORIZONTAL_OFFSET 40
+#define BRICK_TOP_BORDER_MARGIN 20
+
+
 // prototypes
 void initBricks(GWindow window);
 GOval initBall(GWindow window);
@@ -73,7 +83,43 @@ int main(void)
     // keep playing until game over
     while (lives > 0 && bricks > 0)
     {
+        
         // TODO
+        
+        // ** Handle paddle movement **
+        // check for mouse event
+        GEvent event = getNextEvent(MOUSE_EVENT);
+
+        // if we have one
+        if (event != NULL)
+        {
+            // if the event was mouse movement
+            if (getEventType(event) == MOUSE_MOVED)
+            {
+                //d printf("mouse is at %0.f, %0.f\n", getX(event), getY(event));
+                double mouse_x = getX(event);
+                double paddle_x = 0;
+                
+                // Paddle on left edge
+                if (mouse_x <= PADDLE_WIDTH / 2)
+                {
+                    paddle_x = 0;
+                }
+                // Paddle on right edge
+                else if (mouse_x >= WIDTH - PADDLE_WIDTH / 2)
+                {
+                    paddle_x = WIDTH - PADDLE_WIDTH;
+                
+                }
+                // Paddle in middle
+                else
+                {
+                    paddle_x = mouse_x - PADDLE_WIDTH / 2;
+                }
+                
+                setLocation(paddle, paddle_x, PADDLE_VERTICAL_LOCATION);
+            }
+        }        
     }
 
     // wait for click before exiting
@@ -90,6 +136,31 @@ int main(void)
 void initBricks(GWindow window)
 {
     // TODO
+
+    for (int i = 0; i < ROWS; i++)
+    {
+        for (int j = 0; j < COLS; j++)
+        {
+            GRect brick = newGRect(j * BRICK_HORIZONTAL_OFFSET + 2, i * BRICK_VERTICAL_OFFSET + 2 + BRICK_TOP_BORDER_MARGIN, 35, 10);
+            add(window, brick);
+        
+        }
+    }
+    
+    /*
+    
+    GRect brick0 = newGRect(0 * BRICK_HORIZONTAL_OFFSET, 0, 20, 10);
+    add(window, brick0);
+        
+    GRect brick1 = newGRect(1 * BRICK_HORIZONTAL_OFFSET, 0, 20, 10);
+    //GRect brick1 = newGRect(40, 0, 20, 10);
+    add(window, brick1);
+    
+    
+    */
+
+
+
 }
 
 /**
@@ -107,7 +178,15 @@ GOval initBall(GWindow window)
 GRect initPaddle(GWindow window)
 {
     // TODO
-    return NULL;
+    GRect paddle = newGRect(0, 0, PADDLE_WIDTH, PADDLE_HEIGHT);
+    add(window, paddle);
+    setColor(paddle, "GRAY");
+    setFilled(paddle, true);
+    
+    // Center the paddle
+    setLocation(paddle, (WIDTH / 2) - (PADDLE_WIDTH / 2), PADDLE_VERTICAL_LOCATION);
+    
+    return paddle;
 }
 
 /**
